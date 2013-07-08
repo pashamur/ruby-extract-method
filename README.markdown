@@ -17,17 +17,20 @@ A lightweight plugin that creates a method from the highlighted text and saves i
 
 Hint: You can also redefine `Ctrl+V` as `paste_with_indent`, which will make this plugin a little more intuitive.
 
+
 ### Installation
 
 You have two options, the easier of which is to install this package through Package Control.
 
 ####Package Control
 
-Ensure Package Control is installed and Sublime Text 2 has been restarted.
-Open the Command Palette (Command+Shift+P on OS X, Control+Shift+P on Linux/Windows).
-Select "Package Control: Install Package"
-Select Ruby Extract Method when the list appears.
+1. Ensure Package Control is installed and Sublime Text 2 has been restarted.
+2. Open the Command Palette (Command+Shift+P on OS X, Control+Shift+P on Linux/Windows).
+3. Select "Package Control: Install Package"
+4. Select Ruby Extract Method when the list appears.
+
 Congratulations! The package is now installed on your system. 
+
 
 #### Git
 
