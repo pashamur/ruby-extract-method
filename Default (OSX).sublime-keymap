@@ -1,0 +1,3 @@
+[
+  {"keys": ["alt+m"], "command": "ruby_extract_method"}
+]
