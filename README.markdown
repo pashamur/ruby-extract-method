@@ -1,10 +1,8 @@
-## Warning: plugin still in alpha stage
+## Sublime Text 2 plugin: Ruby Extract Method
 
-# Sublime Text 2 plugin: RubyExtractMethod
 
-Simply highlight a block of text and press the modifier keys to perform the extract method refactoring in a ruby file.
 
-## Shortcut Keys
+### Shortcut Keys
 
 **Windows / OSX / Linux:**
 
@@ -14,11 +12,13 @@ Simply highlight a block of text and press the modifier keys to perform the extr
 1. Select the block of code you wish to put into a method and hit the Shortcut Key
 2. Name the method
 3. Hit `Enter`
-4. The method is now in your clipboard - so simply move your cursor to where you want to put the method, and hit `Ctrl+V` (or whatever your paste command is)
+4. Move your cursor to where you want to put the method, and hit `Shift+Ctrl+V` (paste with indent)
 
-## Installation
+Hint: You can also redefine `Ctrl+V` as `paste_with_indent`, which will make this plugin a little more intuitive.
 
-### Git
+### Installation
+
+#### Git
 
 ``` bash
 $ git clone git://github.com/pashamur/ruby-extract-method.git RubyExtractMethod
