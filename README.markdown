@@ -1,24 +1,38 @@
-## Warning: plugin still in alpha stage
+## Sublime Text 2 plugin: Ruby Extract Method
 
-# Sublime Text 2 plugin: RubyExtractMethod
+A lightweight plugin that creates a method from the highlighted text and saves it to your clipboard.
 
-Simply highlight a block of text and press the modifier keys to perform the extract method refactoring in a ruby file.
 
-## Shortcut Keys
+### Shortcut Keys
 
 **Windows / OSX / Linux:**
 
  * `ALT+M` - Extract Method
 
 #### How to perform the Extract Method refactoring in a Ruby file.
-1. Select the block of code you wish to put into a method and hit the Shortcut Key
+1. Select the block of code you wish to put into a method and hit the Shortcut Key (`Alt+M`)
 2. Name the method
 3. Hit `Enter`
-4. The method is now in your clipboard - so simply move your cursor to where you want to put the method, and hit `Ctrl+V` (or whatever your paste command is)
+4. Move your cursor to where you want to put the method, and hit `Shift+Ctrl+V` (paste with indent)
 
-## Installation
+Hint: You can also redefine `Ctrl+V` as `paste_with_indent`, which will make this plugin a little more intuitive.
 
-### Git
+
+### Installation
+
+You have two options, the easier of which is to install this package through Package Control.
+
+####Package Control
+
+1. Ensure Package Control is installed and Sublime Text 2 has been restarted.
+2. Open the Command Palette (Command+Shift+P on OS X, Control+Shift+P on Linux/Windows).
+3. Select "Package Control: Install Package"
+4. Select Ruby Extract Method when the list appears.
+
+Congratulations! The package is now installed on your system. 
+
+
+#### Git
 
 ``` bash
 $ git clone git://github.com/pashamur/ruby-extract-method.git RubyExtractMethod
@@ -41,3 +55,9 @@ Execute the commands below one by one in your terminal.
 $ cd ~/.config/sublime-text-2/Packages/
 $ git clone git://github.com/pashamur/ruby-extract-method.git RubyExtractMethod
 ```
+
+
+#### Limitations
+
+The plugin does not currently support multiple selections. 
+If you select more than one block, only the first one will be used in method creation.
