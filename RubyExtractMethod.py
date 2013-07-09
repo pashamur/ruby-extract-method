@@ -47,12 +47,12 @@ class RubyExtractMethodCommand(sublime_plugin.TextCommand):
         return new_method
 
     def indent_text(self, text):
-        indentation = self.getIndentationString()
+        indentation = self.get_indentation_string()
         dedented_text = textwrap.dedent(string.expandtabs(text, self.tab_size()))
         indented_text = "\n".join(indentation + line for line in dedented_text.splitlines())
         return indented_text
 
-    def getIndentationString(self):
+    def get_indentation_string(self):
         if self.use_spaces_for_indentation():
             return self.tab_size() * " "
         else:
