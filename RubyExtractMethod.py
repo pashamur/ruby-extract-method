@@ -2,8 +2,11 @@
 # Created by Pasha Muravyev (pashamur)
 # https://github.com/pashamur/ruby-extract-method
 
-import sublime, sublime_plugin
-import textwrap, string
+import sublime
+import sublime_plugin
+import textwrap
+import string
+
 
 class RubyExtractMethodCommand(sublime_plugin.TextCommand):
     def run(self, edit):
@@ -44,10 +47,22 @@ class RubyExtractMethodCommand(sublime_plugin.TextCommand):
         return new_method
 
     def indent_text(self, text):
-        tab_size = self.view.settings().get('tab_size', 2)
-        dedented_text = textwrap.dedent(string.expandtabs(text, tab_size))
-        indented_text = "\n".join((tab_size * " ") + i for i in dedented_text.splitlines())
+        indentation = self.getIndentationString()
+        dedented_text = textwrap.dedent(string.expandtabs(text, self.tab_size()))
+        indented_text = "\n".join(indentation + line for line in dedented_text.splitlines())
         return indented_text
 
+    def getIndentationString(self):
+        if self.use_spaces_for_indentation():
+            return self.tab_size() * " "
+        else:
+            return "\t"
+
+    def tab_size(self):
+        return self.view.settings().get('tab_size', 2)
+
+    def use_spaces_for_indentation(self):
+        return self.view.settings().get('translate_tabs_to_spaces', True)
+
     def display_message(self, value):
-      sublime.active_window().active_view().set_status("ruby_extraction_msg", value)
+        sublime.active_window().active_view().set_status("ruby_extraction_msg", value)
