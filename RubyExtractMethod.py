@@ -1,11 +1,11 @@
-# Ruby Extract Method - Sublime Text 2 Plugin
+# Ruby Extract Method - Sublime Text 2 & 3 Plugin
 # Created by Pasha Muravyev (pashamur)
 # https://github.com/pashamur/ruby-extract-method
 
 import sublime
 import sublime_plugin
 import textwrap
-import string
+from .Edit import Edit as Edit
 
 
 class RubyExtractMethodCommand(sublime_plugin.TextCommand):
@@ -31,10 +31,11 @@ class RubyExtractMethodCommand(sublime_plugin.TextCommand):
         return self.view.substr(region)
 
     def replace_region_content_with_method_name(self, region, method_name):
-        if self.region_ends_with_newline(region):
-            self.view.replace(self.edit, region, method_name+"\n")
-        else:
-            self.view.replace(self.edit, region, method_name)
+        with Edit(self.view) as edit:
+            if self.region_ends_with_newline(region):
+                edit.replace(region, method_name+"\n")
+            else:
+                edit.replace(region, method_name)
         self.view.window().run_command('reindent')
 
     def region_ends_with_newline(self, region):
@@ -48,7 +49,7 @@ class RubyExtractMethodCommand(sublime_plugin.TextCommand):
 
     def indent_text(self, text):
         indentation = self.get_indentation_string()
-        dedented_text = textwrap.dedent(string.expandtabs(text, self.tab_size()))
+        dedented_text = textwrap.dedent(text)
         indented_text = "\n".join(indentation + line for line in dedented_text.splitlines())
         return indented_text
 
